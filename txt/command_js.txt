@@ -1,0 +1,3 @@
+ssh ericsson@10.219.162.102
+yes
+Ericsson123#

@@ -1,0 +1,15 @@
+context Abis_IP
+sh ip route all summary
+sh ip arp
+context IuB_UP
+sh ip route all summary
+sh ip arp
+context LTE-S1X
+sh ip route all summary
+sh ip arp
+context OM-HWI
+sh ip route all summary
+sh ip arp
+context OM-Power
+sh ip route all summary
+sh ip arp
