@@ -20,18 +20,17 @@ OM = ['10.24.127.75']
 NMS = '10.23.32.67'
 RTN = '10.23.32.186'
 
-
+# hut kediri 
 def main():
 	crt.Screen.Synchronous = True
 
 # context Abis_IP
+	for line in open("C:\\Users\\eprmdmr\\Documents\\CSR XL\\Script\\txt\\input_RTN.txt", "r"):
+		# Send the line with an appended CR
+		#
+		crt.Screen.Send(line + '\r')
+	# ping to 
 	crt.Screen.Send('context Abis_IP'+ '\r')
-	crt.Sleep(3)
-	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(3)
-	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(3)
-	# ping to Sites
 	for ip_Abis in impacted_Abis:
 		crt.Screen.Send('ping ' + ip_Abis + '\r')
 		crt.Sleep(5)

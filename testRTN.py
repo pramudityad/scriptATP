@@ -26,92 +26,104 @@ def main():
 
 # context Abis_IP
 	crt.Screen.Send('context Abis_IP'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('context Abis_IP')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_Abis in impacted_Abis:
 		crt.Screen.Send('ping ' + ip_Abis + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping to BSC IP
 	for ip_BSC in BSC:
 		crt.Screen.Send('ping '+ ip_BSC +'\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 
 # context IuB_UP
 	crt.Screen.Send('context IuB_UP'+ '\r')
-	crt.Sleep(1)
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_IuB in impacted_IuB_UP:
 		crt.Screen.Send('ping ' + ip_IuB + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping RNC IP
 	for ip_RNC in RNC:
 		crt.Screen.Send('ping '+ ip_RNC +'\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+		crt.Sleep(2)
 
 # context LTE-S1X2
 	crt.Screen.Send('context LTE-S1X2'+ '\r')
-	crt.Sleep(1)
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_LTE in impacted_LTE:
 		crt.Screen.Send('ping ' + ip_LTE + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping MME IP
 	for ip_MME in MME:
 		crt.Screen.Send('ping '+ ip_MME +'\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+		crt.Sleep(2)
 
 # context OM-HWI
 	crt.Screen.Send('context OM-HWI'+ '\r')
-	crt.Sleep(1)
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_OM in impacted_OM:
 		crt.Screen.Send('ping ' + ip_OM + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping OSS IP
 	for ip_OSS in OM:
 		crt.Screen.Send('ping '+ ip_OSS +'\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+		crt.Sleep(2)
 
 # context OM-Power
 	crt.Screen.Send('context OM-Power'+ '\r')
-	crt.Sleep(1)
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_NMS in impacted_NMS:
 		crt.Screen.Send('ping ' + ip_NMS + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping NMS POWER
 	crt.Screen.Send('ping '+ NMS +'\r')
+	crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+	crt.Sleep(2)
 
 # context RTN
 	crt.Screen.Send('context Inband-RTN'+ '\r')
-	crt.Sleep(1)
 	crt.Screen.Send('sh ip route all summary'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
-	crt.Sleep(1)
+	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
 	for ip_RTN in impacted_RTN:
 		crt.Screen.Send('ping ' + ip_RTN + '\r')
+		crt.Screen.WaitForString('round-trip min/avg/max/stddev')
 		crt.Sleep(2)
 	# ping U2000RTN
 	crt.Screen.Send('ping '+ RTN +'\r')
+	crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+	crt.Sleep(2)
 
 	crt.Screen.Synchronous = False
 

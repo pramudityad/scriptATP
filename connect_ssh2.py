@@ -6,7 +6,7 @@
 # some SSH2 protocol specific options.
 
 host = "10.23.38.198"
-user = "eiddayat"
+user = "ericsson"
 
 def main():
 	# Prompt for a password instead of embedding it in a script...
