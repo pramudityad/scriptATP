@@ -43,6 +43,9 @@ def main():
 		crt.Sleep(2)
 
 # context IuB_UP
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
 	crt.Screen.Send('context IuB_UP'+ '\r')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
@@ -60,6 +63,9 @@ def main():
 		crt.Sleep(2)
 
 # context LTE-S1X2
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
 	crt.Screen.Send('context LTE-S1X2'+ '\r')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
@@ -77,6 +83,9 @@ def main():
 		crt.Sleep(2)
 
 # context OM-HWI
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
 	crt.Screen.Send('context OM-HWI'+ '\r')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
@@ -94,6 +103,9 @@ def main():
 		crt.Sleep(2)
 
 # context OM-Power
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
 	crt.Screen.Send('context OM-Power'+ '\r')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
@@ -110,6 +122,9 @@ def main():
 	crt.Sleep(2)
 
 # context RTN
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
+	crt.Screen.Send('\r')
 	crt.Screen.Send('context Inband-RTN'+ '\r')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
