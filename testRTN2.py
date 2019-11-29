@@ -25,20 +25,24 @@ def main():
 	crt.Screen.Synchronous = True
 
 # context Abis_IP
-	for line in open("C:\\Users\\eprmdmr\\Documents\\CSR XL\\Script\\txt\\input_RTN.txt", "r"):
-		# Send the line with an appended CR
-		#
-		crt.Screen.Send(line + '\r')
-	# ping to 
 	crt.Screen.Send('context Abis_IP'+ '\r')
-	for ip_Abis in impacted_Abis:
-		crt.Screen.Send('ping ' + ip_Abis + '\r')
-		crt.Sleep(5)
-	crt.Sleep(5)
-	# ping to BSC IP
-	for ip_BSC in BSC:
-		crt.Screen.Send('ping '+ ip_BSC +'\r')
-		crt.Sleep(5)
+	crt.Screen.WaitForString('context Abis_IP')
+	crt.Screen.Send('sh ip route all summary'+ '\r')
+	crt.Screen.WaitForString('sh ip route all summary')
+	crt.Screen.Send('sh ip arp'+ '\r')
+	# crt.Screen.WaitForString('sh ip arp')
+	crt.Screen.ReadString('sh ip arp')
+	crt.Dialog.MessageBox('sh ip arp')
+	# ping to Sites
+	# for ip_Abis in impacted_Abis:
+	# 	crt.Screen.Send('ping ' + ip_Abis + '\r')
+	# 	crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+	# 	crt.Sleep(2)
+	# # ping to BSC IP
+	# for ip_BSC in BSC:
+	# 	crt.Screen.Send('ping '+ ip_BSC +'\r')
+	# 	crt.Screen.WaitForString('round-trip min/avg/max/stddev')
+	# 	crt.Sleep(2)
 
 	crt.Screen.Synchronous = False
 
