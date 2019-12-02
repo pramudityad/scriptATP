@@ -5,27 +5,36 @@
 # line to a server.
 
 # config
-impacted_Abis = ['10.108.4.195']
-impacted_IuB_UP = ['10.108.4.210']
-impacted_LTE = ['10.108.4.226']
-impacted_OM = ['10.108.4.242']
-impacted_NMS = []
-impacted_RTN = []
+ip_loopback = '10.219.162.34'
 
-BSC = ['10.161.112.12']
-RNC = ['10.189.95.28']
-MME = ['10.205.41.225', '10.205.42.225', '10.205.43.225']
-OM = ['10.24.127.65']
+impacted_Abis = ['10.126.248.50', '10.126.248.51', '10.126.248.55', '10.126.248.56', '10.126.248.57', '10.126.248.58', '10.126.248.60']
+impacted_IuB_UP = ['10.126.248.114', '10.126.248.115', '10.126.248.117', '10.126.248.119', '10.126.248.120', '10.126.248.121', '10.126.248.123']
+impacted_LTE = ['10.126.248.178', '10.126.248.179', '10.126.248.181', '10.126.248.183', '10.126.248.184', '10.126.248.185', '10.126.248.187']
+impacted_OM = ['10.126.248.242', '10.126.248.243', '10.126.248.245', '10.126.248.247', '10.126.248.248', '10.126.248.249', '10.126.248.251']
+impacted_NMS = []
+impacted_RTN = ['10.104.35.42']
+
+BSC = ['10.161.112.67', '10.161.112.68']
+RNC = ['10.189.49.12', '10.189.49.196']
+MME = ['112.215.164.1', '112.215.164.16']
+OM = ['10.24.127.75']
+
 
 # DO NOT CHANGE
 NMS = '10.23.32.67'
 RTN = '10.23.32.186'
+passwd = 'Ericsson123#'
 
 
 def main():
 	crt.Screen.Synchronous = True
+	crt.Screen.Send('ssh ericsson@' + ip_loopback + '\r')
+
+	crt.Screen.WaitForString('password:')
+	crt.Screen.Send(passwd + '\r')
 
 # context Abis_IP
+	crt.Screen.ReadString('[local]')
 	crt.Screen.Send('context Abis_IP'+ '\r')
 	crt.Screen.WaitForString('context Abis_IP')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
