@@ -5,17 +5,29 @@
 # username and password and hostname on the command line as well as
 # some SSH2 protocol specific options.
 
-host = "10.23.38.198"
+ip_loopback = '10.219.165.151'
 user = "ericsson"
+passwd = 'Ericsson123#'
 
 def main():
-	# Prompt for a password instead of embedding it in a script...
-	#
-	passwd = crt.Dialog.Prompt("Enter password for " + host, "Login", "", True)
+	crt.Screen.Synchronous = True
 
-	# Build a command-line string to pass to the Connect method.
-	cmd = "/SSH2 /L %s /PASSWORD %s /C 3DES /M MD5 %s" % (user, passwd, host)
-	crt.Session.Connect(cmd)
+	# for ip_loopback in open("C:\\Users\\eprmdmr\\Documents\\CSR XL\\Script\\txt\\ip_loopback.txt"):
+	crt.Screen.Send('ssh ericsson@' + ip_loopback + '\r')
+	# crt.Screen.WaitForString('password:')
+	# crt.Screen.Send(passwd + '\r')
+	# crt.Screen.Send('exit' + '\r')
 
+	nIndex = crt.Screen.WaitForStrings('Are you sure you want to continue connecting (yes/no)?')
+	
+	if nIndex == 1:
+		crt.Screen.Send('yes' + '\r')
+	elif nIndex == 2:
+		pass
+	return nIndex
+
+	crt.Screen.Send(passwd + '\r')
+	
+	crt.Screen.Synchronous = False
 
 main()
