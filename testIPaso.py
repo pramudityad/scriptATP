@@ -4,17 +4,17 @@
 # This script demonstrates how to open a text file and read it line by
 # line to a server.
 
-impacted_Abis_IP = ['10.126.248.50', '10.126.248.51', '10.126.248.50', '10.126.248.55', '10.126.248.56', '10.126.248.57', '10.126.248.58']
-impacted_IuB_UP = ['10.126.248.114', '10.126.248.115', '10.126.248.117', '10.126.248.119', '10.126.248.120', '10.126.248.121', '10.126.248.123']
-impacted_LTE = ['10.126.248.178', '10.126.248.179', '10.126.248.181', '10.126.248.183', '10.126.248.184', '10.126.248.185', '10.126.248.187']
-impacted_OM = ['10.126.248.242', '10.126.248.243', '10.126.248.245', '10.126.248.247', '10.126.248.248', '10.126.248.249', '10.126.248.251']
+impacted_Abis_IP = ['10.108.223.66']
+impacted_IuB_UP = ['10.108.223.82']
+impacted_LTE = ['10.108.223.98']
+impacted_OM = ['10.108.223.114']
 impacted_NMS = []
-impacted_Ipaso = ['10.104.35.42']
+impacted_Ipaso = []
 
-BSC = ['10.161.112.67', '10.161.112.68']
-RNC = ['10.189.49.12', '10.189.49.196']
-MME = ['112.215.164.1', '112.215.164.16']
-OM = ['10.24.127.75']
+BSC = ['10.161.216.27']
+RNC = ['10.188.121.156']
+MME = ['112.215.164.121','112.215.164.136']
+OM = ['10.24.127.55']
 
 # DO NOT CHANGE
 NMS = '10.23.32.67'
@@ -24,14 +24,14 @@ def main():
 	crt.Screen.Synchronous = True
 
 # context Abis_IP
-crt.Screen.Send('context Abis_IP'+ '\r')
+	crt.Screen.Send('context Abis_IP'+ '\r')
 	crt.Screen.WaitForString('context Abis_IP')
 	crt.Screen.Send('sh ip route all summary'+ '\r')
 	crt.Screen.WaitForString('sh ip route all summary')
 	crt.Screen.Send('sh ip arp'+ '\r')
 	crt.Screen.WaitForString('sh ip arp')
 	# ping to Sites
-	for ip_Abis in impacted_Abis:
+	for ip_Abis in impacted_Abis_IP:
 		crt.Screen.Send('ping ' + ip_Abis + '\r')
 		if crt.Screen.ReadString('5 packets transmitted'):
 			pass
